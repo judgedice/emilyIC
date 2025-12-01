@@ -33,9 +33,11 @@ jobs:
       - name: Build
         env:
           GITHUB_PAGES: 'true'
+          CUSTOM_DOMAIN: 'true'
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          echo "Building with GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "Building with CUSTOM_DOMAIN=true (base path will be '/')"
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
           npm run build || exit 1
           echo "Build completed successfully"
 
@@ -45,8 +47,8 @@ jobs:
           ls -la dist/ || echo "Build directory not found"
           echo "Checking for index.html:"
           ls -la dist/index.html || echo "index.html not found"
-          echo "Contents of built index.html:"
-          head -20 dist/index.html || echo "Could not read index.html"
+          echo "Checking for CNAME file:"
+          cat dist/CNAME || echo "CNAME file not found (this is OK if not using custom domain)"
           echo "Checking for assets:"
           ls -la dist/assets/ 2>/dev/null || echo "No assets directory"
 

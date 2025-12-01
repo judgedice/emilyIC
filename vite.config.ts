@@ -4,12 +4,13 @@
   import path from 'path';
 
   export default defineConfig({
-    // Base path for GitHub Pages - update if repository name changes
-    base: process.env.GITHUB_PAGES === 'true' 
-      ? (process.env.GITHUB_REPOSITORY 
+    // Base path for GitHub Pages
+    // Use '/' for custom domains, '/repo-name/' for GitHub Pages subdirectory
+    base: process.env.CUSTOM_DOMAIN === 'true' || process.env.GITHUB_PAGES !== 'true'
+      ? '/'
+      : (process.env.GITHUB_REPOSITORY 
           ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` 
-          : '/emilyIC/')
-      : '/',
+          : '/emilyIC/'),
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
