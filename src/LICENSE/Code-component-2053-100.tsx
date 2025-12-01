@@ -1,0 +1,12 @@
+Copyright (c) 2025 Emily DiCesaro
+
+All rights reserved.
+
+This portfolio website and its contents are proprietary and confidential.
+No part of this project may be reproduced, distributed, or transmitted in any
+form or by any means, including photocopying, recording, or other electronic
+or mechanical methods, without the prior written permission of the copyright
+holder, except in the case of brief quotations embodied in critical reviews
+and certain other noncommercial uses permitted by copyright law.
+
+For permission requests, please contact emily.dicesaro@gmail.com
