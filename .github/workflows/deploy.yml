@@ -36,7 +36,8 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           echo "Building with GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
-          npm run build
+          npm run build || exit 1
+          echo "Build completed successfully"
 
       - name: Debug - List build output
         run: |
@@ -44,6 +45,10 @@ jobs:
           ls -la dist/ || echo "Build directory not found"
           echo "Checking for index.html:"
           ls -la dist/index.html || echo "index.html not found"
+          echo "Contents of built index.html:"
+          head -20 dist/index.html || echo "Could not read index.html"
+          echo "Checking for assets:"
+          ls -la dist/assets/ 2>/dev/null || echo "No assets directory"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -52,6 +57,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+          if-no-files-found: error
 
   deploy:
     environment:
