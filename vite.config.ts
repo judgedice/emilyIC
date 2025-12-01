@@ -4,13 +4,12 @@
   import path from 'path';
 
   export default defineConfig({
-    base: (() => {
-      if (process.env.GITHUB_PAGES === 'true' && process.env.GITHUB_REPOSITORY) {
-        const repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
-        return repoName ? `/${repoName}/` : '/';
-      }
-      return '/';
-    })(),
+    // Base path for GitHub Pages - update if repository name changes
+    base: process.env.GITHUB_PAGES === 'true' 
+      ? (process.env.GITHUB_REPOSITORY 
+          ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` 
+          : '/emilyIC/')
+      : '/',
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
