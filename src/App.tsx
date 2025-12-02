@@ -32,7 +32,7 @@ export default function App() {
   const sitePassword = import.meta.env.VITE_SITE_PASSWORD || '2026';
 
   return (
-    <PasswordProtection password={sitePassword}>
+    //<PasswordProtection password={sitePassword}>
       <Router>
         <div className="min-h-screen">
           <Routes>
@@ -43,6 +43,6 @@ export default function App() {
           </Routes>
         </div>
       </Router>
-    </PasswordProtection>
+    //</PasswordProtection>
   );
 }
